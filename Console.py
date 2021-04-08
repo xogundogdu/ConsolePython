@@ -1,9 +1,7 @@
 from types import BuiltinMethodType
 import requests
 import json
-import csv
 import pandas as pd
-import numpy as np
 
 EmailsFromCSV=[]
 EmailsFromRequest=[]
@@ -23,35 +21,30 @@ for person in CSVdata["Resources"]: #get and print email property from json
   CSVEmail=person["emails"]
   CSVEmailValue=CSVEmail[0]
   EmailsFromRequest.append(CSVEmailValue["value"])
-      
-# with open('test.csv', 'r') as Data:
-#     SR = csv.DictReader(Data, delimiter=',')
-# 	df=pd.DataFrame(data=SR.data.)
-# 	print(df)
-   
-data=pd.read_csv("test.csv")
-print(data.head())
+       
+data=pd.read_csv("test1.csv")
+print(data)
+print(data['mailValue'])
 
 
-#print(*EmailsFromCSV,sep = "\n")
 print("----------------------------------------------------------------------------")
-#print(*EmailsFromRequest,sep = "\n")
-
-for i in range(len(data.axes[0])):   #will be updated users
-	for j  in range(len(data.axes[1])):
-		if(data.iloc[i][j] in EmailsFromRequest):
-			print("mail eşleşti")
-			BodyForUpdate ={
-			"userName": data.iloc[i]["loginName"],
+for i in range(len(data.axes[0])):
+	#for j  in range(len(data.axes[1])):
+		if(data['mailValue'].to_string in EmailsFromRequest): #update user
+			print("mail eslesmedi")			
+		else:#create user 
+			
+			BodyForUpdate =json.dumps({
+			"userName": data.iloc[i]["userName"],
 			"name": {
-				"givenName": data.iloc[i]["firstName"],
+				"givenName": data.iloc[i]["givenName"],
 				"familyName": data.iloc[i]["familyName"],
 				"middleName": data.iloc[i]["middleName"],
 				"honorificPrefix": data.iloc[i]["honorificPrefix"]
 			},
 			"emails": [
 				{
-					"value": data.iloc[i]["mail"]
+					"value": data.iloc[i]["mailValue"]
 				}
 			],
 			"locale": data.iloc[i]["locale"],
@@ -60,7 +53,7 @@ for i in range(len(data.axes[0])):   #will be updated users
 			"company": data.iloc[i]["company"],
 			"department": data.iloc[i]["department"],
 			"userType": data.iloc[i]["userType"],
-			"active": data.iloc[i]["status"],
+			"active": "true",
 			"sendMail": data.iloc[i]["sendMail"],
 			"mailVerified": data.iloc[i]["mailVerified"],
 			"urn:ietf:params:scim:schemas:extension:enterprise:2.0:User": {
@@ -77,38 +70,22 @@ for i in range(len(data.axes[0])):   #will be updated users
 			"urn:sap:cloud:scim:schemas:extension:custom:2.0:User": {
 				"attributes": [
 					{
-						"name": "customAttribute01",
-						"value": data.iloc[i]["spCustomAttribute01"]
+						"name": data.iloc[i]["CustomAttribute1name"],
+						"value": data.iloc[i]["CustomAttribute1value"]
 					},
 					{
-						"name": "customAttribute02",
-						"value": data.iloc[i]["spCustomAttribute02"]
+						"name": data.iloc[i]["CustomAttribute2name"],
+						"value": data.iloc[i]["CustomAttribute2value"]
 					}
 				]
 			}
-			}		
-
-			
+			})	
 			requestURLForUpdate = "https://aik7cgkgf.accounts.ondemand.com/service/scim/Users" 
-			payloadForUpdate={}
 			headersForUpdate = {
   			'Content-Type': 'application/scim+json',
   			'Authorization': 'Basic YTE3MzkwOTItODcxMC00NjVhLWI1MjktMWIxMjA2MzRmMWM5OllpbGRpejIwMjA='
 			}
-			responseForUpdate = requests.request("POST", requestURLForUpdate, headers=headersForUpdate, data=BodyForUpdate)
-
-			
-			print(responseForUpdate.status_code)
-
-			data.drop(data.index[i])
-			
-			print(data)
-
-			
-
-		
-
-
-	
-			
-	
+			responseForUpdate = requests.request("POST", requestURLForUpdate, headers=headersForUpdate, data=BodyForUpdate)						
+			temp=data.drop(index=i)	
+			print("istek atildi")
+			print(response.status_code)
