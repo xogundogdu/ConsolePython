@@ -1,0 +1,4 @@
+status,loginName,mail,firstName,familyName,middleName,honorificPrefix,locale,displayName,companyRelationship,company,department,userType,language,sendMail,mailVerified,employeeNumber,costCenter,organization,division,department,managerValue,managerRef,spCustomAttribute01,spCustomAttribute02
+active,4444,gokhan.yilmazturk@nttdata.com,Berkay,Baş,,,TR,,,Itelligence Departmanı,SALIM.KIRACILAR@YILDIZDEMIRCELIK.COM.TR,,,,,,,,,,,,,
+active,3333,3333@itelligence.com.tr,Pelin,işiner,,,TR,,,Itelligence Departmanı,SALIM.KIRACILAR@YILDIZDEMIRCELIK.COM.TR,,,,,,,,,,,,,
+active,2222,2222@itelligence.com.tr,Oguzhan,Gungdogdu,,,TR,,,Itelligence Departmanı,SALIM.KIRACILAR@YILDIZDEMIRCELIK.COM.TR,,,,,,,,,,,,,
