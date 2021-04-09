@@ -82,7 +82,6 @@ for i in range(len(data.axes[0])):
 				]
 			}
 			})
-			#BodyForUpdate=BodyForUpdate.replace("'", "\"")
 			requestURLForUpdate = "https://aik7cgkgf.accounts.ondemand.com/service/scim/Users/"+data.iloc[i]["id"]
 			headersForUpdate = {
   			"Content-Type": "application/scim+json",
@@ -93,12 +92,10 @@ for i in range(len(data.axes[0])):
 			print(type(BodyForUpdate))
 			print(BodyForUpdate)			
 			print(responseForUpdate.status_code)
-			print("guncelleme basarili")
-			print(type(json.dumps("true")))
-			print(json.dumps(True))	
+			print("----------------------------------------------------------------------------")
 		else:#create user 			
-			BodyForCreate =str({
-			"userName":data.iloc[i]["userName"],
+			BodyForCreate =json.dumps({
+			"userName":str(data.iloc[i]["userName"]),
 			"name": {
 				"givenName":data.iloc[i]["givenName"],
 				"familyName":data.iloc[i]["familyName"],
@@ -116,7 +113,7 @@ for i in range(len(data.axes[0])):
 			"company":data.iloc[i]["company"],
 			"department":data.iloc[i]["department"],
 			"userType":data.iloc[i]["userType"],
-			"active": str(data.iloc[i]["status"]),
+			"active": True,
 			"sendMail": str(data.iloc[i]["sendMail"]),
 			"mailVerified": str(data.iloc[i]["mailVerified"]),
 			"urn:ietf:params:scim:schemas:extension:enterprise:2.0:User": {
@@ -143,15 +140,12 @@ for i in range(len(data.axes[0])):
 				]
 			}
 			})
-			BodyForCreate=BodyForCreate.replace("'", "\"")
 			requestURLForCreate = "https://aik7cgkgf.accounts.ondemand.com/service/scim/Users" 
 			headersForCreate = {
   			"Content-Type": "application/scim+json",
   			"Authorization": "Basic YTE3MzkwOTItODcxMC00NjVhLWI1MjktMWIxMjA2MzRmMWM5OllpbGRpejIwMjA=",
 			}			
 			responseForCreate = requests.request("POST",requestURLForCreate, headers=headersForCreate, data=BodyForCreate)			
-			print(type(BodyForCreate))
 			print(BodyForCreate)
-			print("istek atildi")
 			print(responseForCreate.status_code)
-			print(responseForCreate.raw)
+			print("----------------------------------------------------------------------------")
