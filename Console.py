@@ -32,10 +32,7 @@ for person in CSVdata["Resources"]: #get email property from json
   EmailsFromRequest.append(CSVEmailValue["value"])
        
 data = pd.read_csv("example.csv")
-print(data)
-print(data.iloc[0]["mailValue"]+"+++++++++++")
 
-print("----------------------------------------------------------------------------")
 for i in range(len(data.axes[0])):
 		if(data.iloc[i]["mailValue"] in EmailsFromRequest): #update user
 			url = "https://"+tenantID+".accounts.ondemand.com/service/scim/Users/"+data.iloc[i]["id"]
