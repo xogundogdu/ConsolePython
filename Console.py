@@ -31,12 +31,12 @@ for person in CSVdata["Resources"]: #get email property from json
   CSVEmailValue = CSVEmail[0]
   EmailsFromRequest.append(CSVEmailValue["value"])
        
-data = pd.read_csv("example.csv")
+data = pd.read_csv("example.csv").fillna("NONE")
 
 for i in range(len(data.axes[0])):
 		if(data.iloc[i]["mailValue"] in EmailsFromRequest): #update user
 			url = "https://"+tenantID+".accounts.ondemand.com/service/scim/Users/"+data.iloc[i]["id"]
-			BodyCreator.BodyCreatorUpdate(data,i,tenantID,url,token)
+			BodyCreator.BodyCreatorUpdate(data,i,url,token)
 		else:#create user 
 			url = "https://"+tenantID+".accounts.ondemand.com/service/scim/Users"			
-			BodyCreator.BodyCreatorCreate(data,i,tenantID,url,token)
+			BodyCreator.BodyCreatorCreate(data,i,url,token)
