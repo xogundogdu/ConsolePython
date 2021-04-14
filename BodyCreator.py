@@ -4,9 +4,11 @@ import pandas as pd
 
 
 
-
+# create json body for updating user
+# initial body only includes required values
 def BodyCreatorUpdate(data, i, url, token):  	
 
+	# set authorization settings
 	headersForUpdate = {
 		"Content-Type": "application/scim+json",
 		"Authorization": "Basic "+token,
@@ -36,7 +38,7 @@ def BodyCreatorUpdate(data, i, url, token):
 		}
            
 
-     
+    # adding new values to body to update, according to csv input file columns 
 
 	if "givenName" in data.columns:
 	    	sJson["name"].update({"givenName": ""} if data.iloc[i]["givenName"] == "NONE" else {"givenName": data.iloc[i]["givenName"]})
@@ -79,6 +81,7 @@ def BodyCreatorUpdate(data, i, url, token):
 	if "managerRef" in data.columns:
 			sJson["urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"]["manager"][0].update({"$ref": str(data.iloc[i]["managerRef"])})
 	
+	#custom attributes (max 10 fields can be utilized):
 	if "CustomAttribute1name" in data.columns:
 			sJson["urn:sap:cloud:scim:schemas:extension:custom:2.0:User"]["attributes"][0].update({"name": data.iloc[0]["CustomAttribute1name"]})
 	if "CustomAttribute1value" in data.columns:
@@ -121,15 +124,20 @@ def BodyCreatorUpdate(data, i, url, token):
 			sJson["urn:sap:cloud:scim:schemas:extension:custom:2.0:User"]["attributes"][9].update({"value": data.iloc[9]["CustomAttribute10value"]})
 
 
-
+	# parse body object to json
 	BodyForUpdate = json.dumps(sJson)
 
 	print(BodyForUpdate)
+	
+	# send request for updating user
 	response = requests.request("PUT", url, headers=headersForUpdate, data=BodyForUpdate)
+
 	print(response.status_code)
 	print(response.text)
 
 
+
+# create json body for creating new user
 def BodyCreatorCreate(data, i, url, token):
 	headersForCreate = {
 		"Content-Type": "application/scim+json",
@@ -179,6 +187,8 @@ def BodyCreatorCreate(data, i, url, token):
 			]
 		}
 		})
+	# send request for creating user
 	response = requests.request("POST", url, headers=headersForCreate, data=BodyForCreate)
+
 	print(response.status_code)
 	print(response.text)
