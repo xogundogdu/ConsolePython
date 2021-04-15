@@ -114,9 +114,10 @@ def BodyCreatorUpdate(data, i, url, token):
 	
 	# send request for updating user
 	response = requests.request("PUT", url, headers=headersForUpdate, data=BodyForUpdate)
-
-	print(response.status_code)
-	print(response.text)
+	if(response.status_code==200):
+    		print(data.iloc[i]["mailValue"]+"mailine sahip kullanici guncellendi")
+	elif(response.status_code==409):
+    		print(data.iloc[i]["mailValue"]+"icin csv dosyasindaki bilgilerin tutarliligini kontrol ediniz")
 
 
 
@@ -224,6 +225,7 @@ def BodyCreatorCreate(data, i, url, token):
 	
 	# send request for creating user
 	response = requests.request("POST", url, headers=headersForCreate, data=BodyForCreate)
-
-	print(response.status_code)
-	print(response.text)
+	if(response.status_code==201):
+		print(data.iloc[i]["mailValue"]+" mailine sahip kullanici olusturuldu")
+	elif(response.status_code==409):
+		print(data.iloc[i]["mailValue"]+" mailline sahip kullanici sistemde mevcut")

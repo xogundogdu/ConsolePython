@@ -1,0 +1,7 @@
+id,userName,givenName,familyName,middleName,mailValue,locale,displayName,companyRelationship,userType,status,sendMail,mailVerified,employeeNumber,costCenter,organization,division,department,managerValue,customAttribute1,customAttribute2,customAttribute3,customAttribute4,customAttribute5
+P000002,111a,berkay,bas,türk,berkay.bas@itelligence.com.tr,TR,osman gundogdu,Partner,partner,TRUE,TRUE,FALSE,JohnS,costCenter,SFSF,Finance,Administration,P000190,customAttribute1,customAttribute2,,test4,
+P000185,111b,bekirhan,kurt,erkek,bekirhan@itelligence.com.tr,TR,oguzhan gundogdu,Partner,partner,TRUE,TRUE,FALSE,JohnS,costCenter,SFSF,Finance,Administration,P000190,customAttribute1,customAttribute2,,,test5
+P000186,111c,arman,arman,arman,arman.zeren@example.com,TR,osman gundogdu,Partner,partner,TRUE,TRUE,FALSE,JohnS,costCenter,SFSF,Finance,Administration,P000190,customAttribute1,customAttribute2,,test4,
+P000187,111d,kemal,kemal,kemal,kemal@itelligence.com.tr,TR,oguzhan gundogdu,Partner,partner,TRUE,TRUE,FALSE,JohnS,costCenter,SFSF,Finance,Administration,P000190,customAttribute1,customAttribute2,,,test5
+P000188,111e,Murat,Murat,Murat,murat.caklili@itelligence.com.tr,TR,osman gundogdu,Partner,partner,TRUE,TRUE,FALSE,JohnS,costCenter,SFSF,Finance,Administration,P000190,customAttribute1,customAttribute2,,test4,
+P000189,111f,Tuna,Tuna,Tuna,Tuna@itelligence.com.tr,TR,oguzhan gundogdu,Partner,partner,TRUE,TRUE,FALSE,JohnS,costCenter,SFSF,Finance,Administration,P000190,customAttribute1,customAttribute2,,,test5

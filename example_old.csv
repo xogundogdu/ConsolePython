@@ -1,3 +1,0 @@
-id,userName,givenName,familyName,middleName,mailValue,locale,displayName,companyRelationship,userType,status,sendMail,mailVerified,employeeNumber,costCenter,organization,division,department,managerValue,customAttribute1,customAttribute2,customAttribute3,customAttribute4,customAttribute5
-P000204,183188,1osman,1osman,1osman,1bulgur@itelligence.com.tr,TR,osman gundogdu,Partner,partner,TRUE,TRUE,FALSE,JohnS,costCenter,SFSF,Finance,Administration,P000190,customAttribute1,customAttribute2,,test4,
-P000002,1102b,1pelin,2isiner,3kadin,berkay.bas@itelligence.com.tr,TR,oguzhan gundogdu,Partner,partner,TRUE,TRUE,FALSE,JohnS,costCenter,SFSF,Finance,Administration,P000190,customAttribute1,customAttribute2,,,test5
